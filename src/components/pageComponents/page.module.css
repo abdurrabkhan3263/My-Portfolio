@@ -1,0 +1,7 @@
+.parallax_effect {
+  transform-style: preserve-3d;
+}
+
+.inner_element {
+  transform: translateZ(60px);
+}
