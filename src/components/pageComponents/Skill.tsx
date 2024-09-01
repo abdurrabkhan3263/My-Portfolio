@@ -1,7 +1,6 @@
 import { skillIcons } from "@/data/skill-icons";
 import React, { use, useRef } from "react";
 import Tilt from "react-parallax-tilt";
-import style from "./page.module.css";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,7 +13,13 @@ function Skill() {
   const heading2 = useRef(null);
   const slogan1 = useRef(null);
   const slogan2 = useRef(null);
-  const logos = document.getElementsByClassName("logos");
+  const logos = useRef<Array<HTMLDivElement>>([]);
+
+  React.useEffect(() => {
+    logos.current = Array.from(
+      document.getElementsByClassName("logos"),
+    ) as Array<HTMLDivElement>;
+  }, []);
 
   function scrollAnimation(
     elements: Array<HTMLElement | null>,
@@ -56,7 +61,7 @@ function Skill() {
   useGSAP(() => {
     scrollAnimation([heading.current, heading2.current], "slide");
     scrollAnimation([slogan1.current, slogan2.current], "slide");
-    const logoElement = Array.from(logos) as HTMLElement[];
+    const logoElement = logos.current as HTMLElement[];
     scrollAnimation(logoElement, "scale");
   }, []);
 

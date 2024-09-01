@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-24">
       {/* ABOUT SECTION */}
-      <About />
+      {/* <About /> */}
       {/* WHAT I KNOW IT */}
-      <Skill />
+      {/* <Skill /> */}
       {/* Projects page */}
       <Project />
       <div className="h-screen bg-red-600"></div>
