@@ -28,31 +28,31 @@ function Skill() {
     if (animationMode === "slide") {
       gsap.to([...elements], {
         translateY: 0,
-        stagger: 0.3,
+        stagger: 0.5,
         opacity: 1,
         ease: "power2",
         duration: 0.5,
         scrollTrigger: {
-          trigger: [...elements],
+          trigger: elements[0],
           scroller: "body",
           start: "top 80%",
           end: "top 70%",
-          scrub: 1,
+          scrub: true,
         },
       });
     } else if (animationMode === "scale") {
       gsap.to([...elements], {
         scale: 1,
-        stagger: 0.3,
+        stagger: 0.5,
         opacity: 1,
         ease: "power2",
         duration: 0.5,
         scrollTrigger: {
-          trigger: [...elements],
+          trigger: elements[0],
           scroller: "body",
           start: "top 80%",
           end: "top 70%",
-          scrub: 2,
+          scrub: true,
         },
       });
     }

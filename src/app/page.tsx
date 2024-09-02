@@ -6,17 +6,19 @@ import About from "@/components/pageComponents/About";
 import { skillIcons } from "@/data/skill-icons";
 import Skill from "@/components/pageComponents/Skill";
 import Project from "@/components/pageComponents/Project";
+import Contact from "@/components/pageComponents/Contact";
 
 export default function Home() {
   return (
     <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-24">
       {/* ABOUT SECTION */}
-      {/* <About /> */}
+      <About />
       {/* WHAT I KNOW IT */}
-      {/* <Skill /> */}
+      <Skill />
       {/* Projects page */}
       <Project />
-      <div className="h-screen bg-red-600"></div>
+      {/* Contact Page */}
+      <Contact />
     </div>
   );
 }
