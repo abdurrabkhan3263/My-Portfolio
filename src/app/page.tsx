@@ -6,6 +6,7 @@ import About from "@/components/pageComponents/About";
 import { skillIcons } from "@/data/skill-icons";
 import Skill from "@/components/pageComponents/Skill";
 import Project from "@/components/pageComponents/Project";
+import Contact from "@/components/pageComponents/Contact";
 
 export default function Home() {
   return (
@@ -16,7 +17,8 @@ export default function Home() {
       <Skill />
       {/* Projects page */}
       <Project />
-      <div className="h-screen bg-red-600"></div>
+      {/* Contact Page */}
+      <Contact />
     </div>
   );
 }
