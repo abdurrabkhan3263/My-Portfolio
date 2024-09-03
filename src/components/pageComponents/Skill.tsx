@@ -28,31 +28,29 @@ function Skill() {
     if (animationMode === "slide") {
       gsap.to([...elements], {
         translateY: 0,
-        stagger: 0.5,
+        stagger: 0.3,
         opacity: 1,
         ease: "power2",
-        duration: 0.5,
+        duration: 0.3,
         scrollTrigger: {
           trigger: elements[0],
           scroller: "body",
           start: "top 80%",
           end: "top 70%",
-          scrub: true,
         },
       });
     } else if (animationMode === "scale") {
       gsap.to([...elements], {
         scale: 1,
-        stagger: 0.5,
+        stagger: 0.3,
         opacity: 1,
         ease: "power2",
-        duration: 0.5,
+        duration: 0.3,
         scrollTrigger: {
           trigger: elements[0],
           scroller: "body",
           start: "top 80%",
           end: "top 70%",
-          scrub: true,
         },
       });
     }
@@ -66,9 +64,9 @@ function Skill() {
   }, []);
 
   return (
-    <div className="h-screen text-white">
+    <div className="min-h-screen text-white">
       <div className="mt-16 flex w-full justify-center">
-        <div className="w-1/2 text-center">
+        <div className="w-full text-center lg:w-1/2">
           <div className="overflow-hidden">
             <h1
               className="translate-y-full text-6xl font-bold opacity-0"
@@ -79,7 +77,7 @@ function Skill() {
           </div>
           <div className="overflow-hidden">
             <h1
-              className="translate-y-full text-6xl font-bold opacity-0"
+              className="translate-y-full text-5xl font-bold opacity-0 sm:text-6xl"
               ref={heading2}
             >
               Technologies.
@@ -89,7 +87,7 @@ function Skill() {
       </div>
       <div className="mt-32 flex justify-center">
         <div
-          className="flex w-2/3 flex-wrap justify-center gap-x-20 gap-y-24 text-6xl"
+          className="flex w-full flex-wrap justify-center gap-x-20 gap-y-24 text-5xl sm:text-6xl lg:w-2/3"
           id="logos"
         >
           {skillIcons.map(({ Icon }, index) => (
@@ -114,7 +112,7 @@ function Skill() {
         </div>
       </div>
       <div className="text-medium mt-28 flex justify-center text-lg font-medium">
-        <div className="w-1/2">
+        <div className="w-full lg:w-1/2">
           <div className="overflow-hidden">
             <p className="translate-y-full text-center" ref={slogan1}>
               I believe in the power of continuous learning and growth, and I’m

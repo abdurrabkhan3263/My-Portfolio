@@ -19,28 +19,26 @@ function Project() {
       gsap.to(elements, {
         translateX: 0,
         opacity: 1,
-        ease: "power1.inOut",
-        duration: 0.4,
+        ease: "power2.inOut",
         scrollTrigger: {
           trigger: elements,
           scroller: "body",
-          start: "top 80%",
-          end: "top 70%",
-          scrub: 0.3, // Added a small scrub value for smoother scrubbing
+          start: "top 90%",
+          end: "top 95%",
         },
       });
     } else if (target === "project__card" && Array.isArray(elements)) {
       gsap.to(elements, {
         translateY: 0,
         opacity: 1,
-        duration: 0.4,
-        stagger: 0.3,
+        duration: 0.3,
+        stagger: 0.2,
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: elements[0],
           scroller: "body",
-          start: "top 80%", // Start when the top of the element hits 80% of the viewport height
-          end: "top 70%", // End when it hits 70%
+          start: "top 90%",
+          end: "top 95%",
         },
       });
     }
@@ -60,7 +58,7 @@ function Project() {
   }, []);
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="mt-16 min-h-screen text-white lg:mt-0">
       <div className="overflow-hidden">
         <h1
           className="-translate-x-full text-5xl font-bold"
@@ -69,7 +67,7 @@ function Project() {
           Projects
         </h1>
       </div>
-      <div className="mb-16 mt-16 grid grid-cols-4 gap-16">
+      <div className="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {Array(10)
           .fill(0)
           .map((_, i) => (
