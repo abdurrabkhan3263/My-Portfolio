@@ -10,7 +10,7 @@ import Contact from "@/components/pageComponents/Contact";
 
 export default function Home() {
   return (
-    <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-24">
+    <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-12 lg:px-24">
       {/* ABOUT SECTION */}
       <About />
       {/* WHAT I KNOW IT */}

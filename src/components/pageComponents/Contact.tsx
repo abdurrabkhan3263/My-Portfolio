@@ -43,7 +43,6 @@ function Contact() {
         scroller: "body",
         start: "top 80%",
         end: "top 70%",
-        scrub: 1,
       },
     });
   }, []);
@@ -53,7 +52,7 @@ function Contact() {
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-fit pb-16 pt-32 text-white">
       <div className="overflow-hidden">
         <h1
           className="-translate-x-full text-5xl font-bold"

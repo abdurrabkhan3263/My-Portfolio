@@ -6,11 +6,13 @@ import Button from "../ui/button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import Image from "next/image";
 
 function About() {
   const element2 = useRef(null);
   const element3 = useRef(null);
   const element4 = useRef(null);
+  const profileImage = useRef(null);
   const timeLine = gsap.timeline();
 
   useGSAP(() => {
@@ -20,10 +22,19 @@ function About() {
       duration: "0.3",
       stagger: 0.4,
     });
+    timeLine.to(profileImage.current, {
+      translateY: "0px",
+      ease: "power1",
+      opacity: 1,
+      duration: "0.5",
+    });
   }, []);
   return (
-    <div className="w-full text-white" style={{ height: "calc(100vh - 80px)" }}>
-      <div className="flex h-full items-center">
+    <div
+      className="flex w-full flex-col text-white lg:flex-row"
+      style={{ minHeight: "calc(100vh - 80px)" }}
+    >
+      <div className="mt-16 flex h-full flex-1 items-center">
         <div>
           <div>
             <p className="text-2xl font-medium">Hello, I am</p>
@@ -78,9 +89,9 @@ function About() {
               </div>
             </div>
           </div>
-          <div className="mt-7 flex gap-14 overflow-hidden">
+          <div className="mt-16 flex gap-14 overflow-hidden">
             <span>
-              <Button>Hire Me</Button>
+              <Button className="text-nowrap">Hire Me</Button>
             </span>
             <span>
               <Button>Portfolio</Button>
@@ -88,7 +99,16 @@ function About() {
           </div>
         </div>
       </div>
-      <div></div>
+      <div className="mt-16 flex w-full flex-1 items-center justify-center lg:mt-0">
+        <div ref={profileImage} className="translate-y-10 opacity-0">
+          <Image
+            src={"./image__profile.jpg"}
+            alt="my__image"
+            width={500}
+            height={500}
+          />
+        </div>
+      </div>
     </div>
   );
 }

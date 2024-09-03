@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-import style from "./style.module.css";
 
 const navList = [
   {
@@ -28,9 +27,9 @@ function NavLinks() {
         <Link
           key={name}
           href={link}
-          className={`text-white font-semibold text-base ${
-            pathName === link ? "bg-red-500 " : "border"
-          } px-8 py-2 border-white rounded-full font-medium`}
+          className={`text-base font-semibold text-white ${
+            pathName === link ? "bg-red-500" : "border"
+          } rounded-full border-white px-8 py-2 font-medium`}
         >
           {name}
         </Link>

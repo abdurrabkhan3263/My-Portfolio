@@ -75,6 +75,9 @@ const config = {
       boxShadowColor: {
         lightShadow: "#93c4fd25",
       },
+      screens: {
+        mDevice: "1250px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
