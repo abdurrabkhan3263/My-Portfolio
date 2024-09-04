@@ -1,3 +1,4 @@
+"use client";
 import { useGSAP } from "@gsap/react";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -52,7 +53,7 @@ function Contact() {
   };
 
   return (
-    <div className="min-h-fit pb-16 pt-32 text-white">
+    <div className="min-h-fit pb-16 pt-16 text-white">
       <div className="overflow-hidden">
         <h1
           className="-translate-x-full text-5xl font-bold"
@@ -120,7 +121,9 @@ function Contact() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="hover:bg-blue-600">
+              Submit
+            </Button>
           </form>
         </Form>
       </div>

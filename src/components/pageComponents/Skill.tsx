@@ -1,3 +1,4 @@
+"use client";
 import { skillIcons } from "@/data/skill-icons";
 import React, { use, useRef } from "react";
 import Tilt from "react-parallax-tilt";
@@ -39,13 +40,13 @@ function Skill() {
           end: "top 70%",
         },
       });
-    } else if (animationMode === "scale") {
-      gsap.to([...elements], {
+    } else if (animationMode === "scale" && elements.length > 0) {
+      gsap.to(elements, {
         scale: 1,
         stagger: 0.3,
         opacity: 1,
         ease: "power2",
-        duration: 0.3,
+        duration: 0.6,
         scrollTrigger: {
           trigger: elements[0],
           scroller: "body",
@@ -65,7 +66,7 @@ function Skill() {
 
   return (
     <div className="min-h-screen text-white">
-      <div className="mt-16 flex w-full justify-center">
+      <div className="mt-32 flex w-full justify-center">
         <div className="w-full text-center lg:w-1/2">
           <div className="overflow-hidden">
             <h1
