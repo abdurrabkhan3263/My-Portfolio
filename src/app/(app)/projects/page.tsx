@@ -1,13 +1,17 @@
-"use client";
-
 import Project from "@/components/pageComponents/Project";
 import React from "react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Projects page",
+};
 
 function page() {
   return (
     <div
       style={{ minHeight: "calc(100vh - 80px)" }}
-      className="px-12 pb-16 lg:px-24"
+      className="px-9 pb-16 lg:px-24"
     >
       <div className="mt-16 min-h-fit">
         <Project />

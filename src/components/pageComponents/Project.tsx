@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -58,7 +59,7 @@ function Project() {
   }, []);
 
   return (
-    <div className="mt-16 min-h-screen text-white lg:mt-0">
+    <div className="mt-32 min-h-screen text-white lg:mt-0">
       <div className="overflow-hidden">
         <h1
           className="-translate-x-full text-5xl font-bold"

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareUpwork, FaSquareXTwitter } from "react-icons/fa6";
@@ -7,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 function About() {
   const element2 = useRef(null);
@@ -70,31 +72,59 @@ function About() {
               <div className="mt-7">
                 <p className="text-lg font-medium">Find me on</p>
               </div>
-              <div className="mt-3 flex gap-6 text-[#faf9f9]">
-                <button>
+              <div className="mt-3 flex gap-6">
+                <Link
+                  href={"https://github.com/abdurrabkhan3263"}
+                  target="_blank"
+                  className="hover:text-[#fff27e]"
+                >
                   <FaGithubSquare size={24} />
-                </button>
-                <button>
+                </Link>
+                <Link
+                  href={"https://www.linkedin.com/in/abdur-rab-khan-188a672a7/"}
+                  target="_blank"
+                  className="hover:text-[#fff27e]"
+                >
                   <FaLinkedin size={24} />
-                </button>
-                <button>
+                </Link>
+                <Link
+                  href={"https://x.com/abdurrabkhan01"}
+                  target="_blank"
+                  className="hover:text-[#fff27e]"
+                >
                   <FaSquareXTwitter size={24} />
-                </button>
-                <button>
+                </Link>
+                <Link
+                  href={
+                    "https://www.fiverr.com/abdurrabkhan438/buying?source=avatar_menu_profile"
+                  }
+                  target="_blank"
+                  className="hover:text-[#fff27e]"
+                >
                   <TbBrandFiverr size={24} />
-                </button>
-                <button>
+                </Link>
+                <Link
+                  href={
+                    "https://www.upwork.com/freelancers/~0189aced5998188a05"
+                  }
+                  target="_blank"
+                  className="hover:text-[#fff27e]"
+                >
                   <FaSquareUpwork size={24} />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
           <div className="mt-16 flex gap-14 overflow-hidden">
             <span>
-              <Button className="text-nowrap">Hire Me</Button>
+              <Button className="text-nowrap shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg">
+                Hire Me
+              </Button>
             </span>
             <span>
-              <Button>Portfolio</Button>
+              <Button className="shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg">
+                Portfolio
+              </Button>
             </span>
           </div>
         </div>
@@ -106,6 +136,7 @@ function About() {
             alt="my__image"
             width={500}
             height={500}
+            loading="eager"
           />
         </div>
       </div>

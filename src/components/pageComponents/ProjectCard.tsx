@@ -1,7 +1,7 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 import gsap from "gsap";
+import { Navigation } from "lucide-react";
 
 function ProjectCard() {
   const videoElement = useRef<HTMLVideoElement | null>(null);
@@ -104,7 +105,7 @@ function ProjectCard() {
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button>Click Here Brother</Button>
+          <Button>Click to see</Button>
         </CardFooter>
       </Card>
     </Tilt>
@@ -114,5 +115,14 @@ function ProjectCard() {
 export default ProjectCard;
 
 export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="w-full rounded-md border py-2">{children}</button>;
+  const nav = useRef<HTMLSpanElement | null>(null);
+
+  return (
+    <button className="flex w-full justify-center gap-4 overflow-hidden rounded-md border bg-red-500 py-2 text-white hover:bg-red-400">
+      {children}
+      <span ref={nav}>
+        <Navigation size={24} />
+      </span>
+    </button>
+  );
 }
