@@ -1,6 +1,6 @@
 "use client";
 import { useGSAP } from "@gsap/react";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useForm } from "react-hook-form";
 import {
@@ -18,6 +18,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/schema/form.schama";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Textarea } from "../ui/textarea";
+import { Message } from "@/model/message.model";
+import axios, { isCancel, AxiosError } from "axios";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
@@ -48,8 +50,13 @@ function Contact() {
     });
   }, []);
 
-  const onSubmit = (data: any) => {
-    alert(JSON.stringify(data));
+  const onSubmit = async (data: Message): Promise<void> => {
+    try {
+      const response = await axios.post("/api/send-message", data);
+      console.log(response);
+    } catch (error) {
+      console.error("find some error while sending the message:- ", error);
+    }
   };
 
   return (
