@@ -23,7 +23,6 @@ import axios, { isCancel, AxiosError } from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2Icon } from "lucide-react";
 
-gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {

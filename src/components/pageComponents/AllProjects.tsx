@@ -7,11 +7,10 @@ import { useGSAP } from "@gsap/react";
 import axios from "axios";
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(useGSAP);
 
-function Project() {
+function AllProjects() {
   const projectHeading = useRef<HTMLHeadingElement>(null);
-  const projectCards = useRef<Array<HTMLSpanElement | null>>([]);
+  const projectCards = useRef<(HTMLSpanElement | null)[]>([]);
 
   const animation = (
     elements: HTMLHeadingElement | HTMLSpanElement[],
@@ -51,12 +50,20 @@ function Project() {
       animation(projectHeading.current, "heading");
     }
     if (projectCards.current.length > 0) {
-      // Filter out null values
-      const cards = projectCards.current.filter(
-        (card) => card !== null,
-      ) as HTMLSpanElement[];
+      const cards = projectCards.current as HTMLSpanElement[];
       animation(cards, "project__card");
     }
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("/api/get-projects");
+        console.log("Projects are ", res.data);
+      } catch (error) {
+        console.error("Error fetching projects");
+      }
+    })();
   }, []);
 
   return (
@@ -76,7 +83,11 @@ function Project() {
             <span
               key={i}
               className="project__card translate-y-11 opacity-0"
-              ref={(el: HTMLSpanElement) => (projectCards.current[i] = el)}
+              ref={(el) => {
+                if (el) {
+                  projectCards.current[i] = el;
+                }
+              }}
             >
               <ProjectCard />
             </span>
@@ -86,4 +97,4 @@ function Project() {
   );
 }
 
-export default Project;
+export default AllProjects;

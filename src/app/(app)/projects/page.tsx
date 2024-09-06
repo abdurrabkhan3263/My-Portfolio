@@ -1,7 +1,9 @@
-import Project from "@/components/pageComponents/Project";
+import Project from "@/components/pageComponents/AllProjects";
 import React from "react";
 import type { Metadata } from "next";
 import axios from "axios";
+import AllProjects from "@/components/pageComponents/AllProjects";
+import Projects from "@/components/pageComponents/Projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -14,9 +16,7 @@ function page() {
       style={{ minHeight: "calc(100vh - 80px)" }}
       className="px-9 pb-16 lg:px-24"
     >
-      <div className="mt-16 min-h-fit">
-        <Project />
-      </div>
+      <Projects />
     </div>
   );
 }

@@ -135,6 +135,7 @@ function About() {
             width={500}
             height={500}
             loading="eager"
+            priority
           />
         </div>
       </div>

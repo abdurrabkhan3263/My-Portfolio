@@ -88,6 +88,7 @@ function ProjectCard() {
                 width={300}
                 height={100}
                 ref={imageElement}
+                priority
               />
               <video
                 src="https://res.cloudinary.com/dhq8asxro/video/upload/v1725627908/zwgotn8k8may4xn2kxhb.mp4"
