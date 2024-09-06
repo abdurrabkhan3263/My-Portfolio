@@ -20,12 +20,16 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Textarea } from "../ui/textarea";
 import { Message } from "@/model/message.model";
 import axios, { isCancel, AxiosError } from "axios";
+import { useToast } from "@/components/ui/use-toast";
+import { Loader2Icon } from "lucide-react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 function Contact() {
   const contactHeading = useRef<HTMLHeadingElement>(null);
+  const [isSending, setIsSending] = React.useState(false);
+  const { toast } = useToast();
   const form = useForm({
     defaultValues: {
       email: "",
@@ -50,12 +54,26 @@ function Contact() {
     });
   }, []);
 
-  const onSubmit = async (data: Message): Promise<void> => {
+  const onSubmit = async (data: any) => {
     try {
+      setIsSending(true);
       const response = await axios.post("/api/send-message", data);
-      console.log(response);
+      if (response.data.status) {
+        form.reset();
+        toast({
+          title: "Message Sent",
+          description: "Your message has been sent successfully",
+        });
+      }
     } catch (error) {
-      console.error("find some error while sending the message:- ", error);
+      const axiosError = error as AxiosError;
+      toast({
+        title: "Failed to send message",
+        description: "Please try again",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -128,8 +146,21 @@ function Contact() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="hover:bg-blue-600">
-              Submit
+            <Button
+              type="submit"
+              className="flex gap-2 hover:bg-blue-600"
+              disabled={isSending}
+            >
+              {isSending ? (
+                <>
+                  <p>Sending</p>
+                  <span>
+                    <Loader2Icon className="animate-spin" />
+                  </span>
+                </>
+              ) : (
+                "Send"
+              )}
             </Button>
           </form>
         </Form>

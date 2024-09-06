@@ -5,7 +5,16 @@ export async function POST(request: Request) {
   await dbConnect();
   try {
     const data = await request.json();
-    console.log("FORM DATA IS:-     ", data);
+    const message = await MessageModel.create(data);
+    if (!message) {
+      return Response.json(
+        {
+          status: false,
+          message: "Failed to send the message try again",
+        },
+        { status: 500 },
+      );
+    }
     return Response.json(
       {
         status: true,

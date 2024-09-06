@@ -16,9 +16,9 @@ export default function RootLayout({
           <main className="bg-[#0E0C38]">
             <Nav />
             {children}
+            <Toaster />
           </main>
         </StoreProvider>
-        <Toaster />
       </body>
     </html>
   );

@@ -95,9 +95,7 @@ function About() {
                   <FaSquareXTwitter size={24} />
                 </Link>
                 <Link
-                  href={
-                    "https://www.fiverr.com/abdurrabkhan438/buying?source=avatar_menu_profile"
-                  }
+                  href={"https://www.fiverr.com/abdurrabkhan438"}
                   target="_blank"
                   className="hover:text-[#fff27e]"
                 >

@@ -4,7 +4,8 @@ export const projectData = [
     description:
       "Full Stack Todo App with CRUD operations, authentication, and reminder feature. Built using the MERN stack (MongoDB, Express.js, React.js, Node.js).",
     image: "/images/project1.jpg",
-    video: "",
+    video:
+      "https://res.cloudinary.com/dhq8asxro/image/upload/v1725627853/bwfnuccvoat3jkccsjhd.png",
     link: "https://www.google.com",
   },
 ];

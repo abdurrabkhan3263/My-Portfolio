@@ -90,7 +90,7 @@ function ProjectCard() {
                 ref={imageElement}
               />
               <video
-                src="https://res.cloudinary.com/dhq8asxro/video/upload/v1725594174/12125582_2560_1440_25fps_syi5bf.mp4"
+                src="https://res.cloudinary.com/dhq8asxro/video/upload/v1725627908/zwgotn8k8may4xn2kxhb.mp4"
                 muted
                 loop={true}
                 controls
