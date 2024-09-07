@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-9 lg:px-24">
+    <div style={{ minHeight: "calc(100vh - 80px)" }} className="px-6 lg:px-24">
       <div>
         <Contact />
       </div>

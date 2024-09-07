@@ -11,7 +11,7 @@ async function page() {
   return (
     <div
       style={{ minHeight: "calc(100vh - 80px)" }}
-      className="px-9 pb-16 lg:px-24"
+      className="px-6 pb-16 lg:px-24"
     >
       <Projects />
     </div>

@@ -17,8 +17,10 @@ export default function RootLayout({
             <Nav />
             {children}
           </main>
-          <Toaster />
         </StoreProvider>
+        <div>
+          <Toaster />
+        </div>
       </body>
     </html>
   );

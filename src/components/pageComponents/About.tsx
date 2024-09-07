@@ -43,7 +43,7 @@ function About() {
           </div>
           <div className="mt-1 overflow-hidden">
             <h1
-              className="translate-y-full text-[80px] font-extrabold leading-[75px]"
+              className="translate-y-full text-6xl font-extrabold leading-[75px] lg:text-[80px]"
               ref={element2}
             >
               Abdur Rab
@@ -51,17 +51,14 @@ function About() {
           </div>
           <div className="overflow-hidden">
             <h1
-              className="translate-y-full text-[80px] font-extrabold leading-[75px]"
+              className="translate-y-full text-6xl font-extrabold leading-[75px] lg:text-[80px]"
               ref={element3}
             >
               Khan
             </h1>
           </div>
-          <div className="overflow-hidden">
-            <p
-              className="mt-2.5 translate-y-full text-lg font-medium"
-              ref={element4}
-            >
+          <div className="overflow-hidden text-base lg:text-lg">
+            <p className="mt-2.5 translate-y-full font-medium" ref={element4}>
               Passionate
               <span className="text-[#FFC327]"> Full Stack Web Developer </span>
               && enthusiast to build applications.
@@ -115,13 +112,13 @@ function About() {
           </div>
           <div className="mt-16 flex gap-14 overflow-hidden">
             <span>
-              <Button className="text-nowrap shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg">
-                Hire Me
-              </Button>
-            </span>
-            <span>
-              <Button className="shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg">
-                Portfolio
+              <Button
+                className="shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg"
+                onClick={() => {
+                  window.open("/resume.pdf", "_blank");
+                }}
+              >
+                Resume
               </Button>
             </span>
           </div>

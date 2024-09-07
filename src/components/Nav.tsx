@@ -14,7 +14,7 @@ function Nav() {
   return (
     <>
       <MobileNav />
-      <div className="flex h-[80px] w-full select-none items-center justify-between px-12 lg:px-24">
+      <div className="flex h-[80px] w-full select-none items-center justify-between px-6 lg:px-24">
         <div className="hidden lg:block">
           <Link
             href={"/"}

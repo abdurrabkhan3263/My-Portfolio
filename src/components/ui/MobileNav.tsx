@@ -52,19 +52,19 @@ function MobileNav() {
   ];
 
   return (
-    <div className="fixed -top-full z-30 h-full w-full bg-[#0E0C38] px-6 pt-6 text-white">
+    <div className="fixed -top-full z-[3] h-full w-full bg-[#0E0C38] px-6 pt-6 text-white">
       <X
         className="h-11 w-11"
         onClick={() => {
           dispatch(setNav(false));
         }}
       />
-      <div>
+      <div className="mt-10">
         {navList.map(({ name, link }, i) => (
           <div key={name} className="overflow-hidden">
             <Link
               href={link}
-              className={`my-6 block ${pathName === link ? "font-semibold" : "font-medium"} translate-y-[140%] text-7xl font-semibold text-white opacity-0`}
+              className={`my-3 block ${pathName === link ? "font-semibold" : "font-medium"} translate-y-[140%] text-6xl font-semibold text-white opacity-0`}
               onClick={() => dispatch(setNav(false))}
               ref={(el: HTMLAnchorElement) => {
                 if (el) {

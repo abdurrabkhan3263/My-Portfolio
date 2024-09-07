@@ -16,8 +16,8 @@ function AllProjects() {
   const [allProjects, setAllProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useGSAP(() => {
-    if (projectCards.current.length > 0) {
+  useEffect(() => {
+    if (projectCards.current.length > 0 && !loading) {
       const cards = projectCards.current as HTMLSpanElement[];
       gsap.to(cards, {
         translateY: 0,
@@ -29,11 +29,10 @@ function AllProjects() {
           trigger: cards[0],
           scroller: "body",
           start: "top 90%",
-          end: "top 95%",
         },
       });
     }
-  }, []);
+  }, [loading]);
 
   useEffect(() => {
     (async () => {
@@ -52,7 +51,7 @@ function AllProjects() {
 
   if (loading) {
     return (
-      <div className="flex h-screen items-start justify-center">
+      <div className="mt-36 flex h-screen items-start justify-center">
         <span className="animate-spin">
           <Loader2 height={50} width={50} />
         </span>
@@ -69,6 +68,7 @@ function AllProjects() {
             ref={(el: HTMLSpanElement) => {
               projectCards.current[index] = el;
             }}
+            className="translate-y-7 opacity-0"
           >
             <ProjectCard project={project} />
           </span>

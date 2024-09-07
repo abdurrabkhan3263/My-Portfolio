@@ -69,7 +69,7 @@ function Skill() {
         <div className="w-full text-center lg:w-1/2">
           <div className="overflow-hidden">
             <h1
-              className="translate-y-full text-6xl font-bold opacity-0"
+              className="translate-y-full text-[2.85rem] font-bold opacity-0"
               ref={heading}
             >
               These Are My Go-To
@@ -77,7 +77,7 @@ function Skill() {
           </div>
           <div className="overflow-hidden">
             <h1
-              className="translate-y-full text-5xl font-bold opacity-0 sm:text-6xl"
+              className="translate-y-full text-[2.85rem] font-bold opacity-0 sm:text-6xl"
               ref={heading2}
             >
               Technologies.
@@ -100,18 +100,15 @@ function Skill() {
                 glareMaxOpacity={0.45}
                 scale={1.2}
               >
-                <button
-                  key={index}
-                  className="rounded-xl p-3 hover:bg-[#006666]"
-                >
+                <div className="rounded-xl p-3 hover:bg-[#006666]">
                   <Icon />
-                </button>
+                </div>
               </Tilt>
             </div>
           ))}
         </div>
       </div>
-      <div className="text-medium mt-28 flex justify-center text-lg font-medium">
+      <div className="text-medium mt-28 flex justify-center text-base font-medium lg:text-lg">
         <div className="w-full lg:w-1/2">
           <div className="overflow-hidden">
             <p className="translate-y-full text-center" ref={slogan1}>

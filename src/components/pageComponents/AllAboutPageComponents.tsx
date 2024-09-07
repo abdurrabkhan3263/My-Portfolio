@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect } from "react";
 import About from "./About";
 import Skill from "./Skill";
