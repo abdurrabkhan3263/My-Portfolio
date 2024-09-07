@@ -2,56 +2,34 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ProjectCard from "./ProjectCard";
 import { useGSAP } from "@gsap/react";
 import axios from "axios";
+import { Project } from "@/lib/types";
+import { useState } from "react";
+import ProjectCard from "./ProjectCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function AllProjects() {
-  const projectHeading = useRef<HTMLHeadingElement>(null);
   const projectCards = useRef<(HTMLSpanElement | null)[]>([]);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
 
-  const animation = (
-    elements: HTMLHeadingElement | HTMLSpanElement[],
-    target: "heading" | "project__card",
-  ) => {
-    if (target === "heading" && elements instanceof HTMLHeadingElement) {
-      gsap.to(elements, {
-        translateX: 0,
-        opacity: 1,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: elements,
-          scroller: "body",
-          start: "top 90%",
-          end: "top 95%",
-        },
-      });
-    } else if (target === "project__card" && Array.isArray(elements)) {
-      gsap.to(elements, {
+  useGSAP(() => {
+    if (projectCards.current.length > 0) {
+      const cards = projectCards.current as HTMLSpanElement[];
+      gsap.to(cards, {
         translateY: 0,
         opacity: 1,
         duration: 0.3,
         stagger: 0.2,
         ease: "power1.inOut",
         scrollTrigger: {
-          trigger: elements[0],
+          trigger: cards[0],
           scroller: "body",
           start: "top 90%",
           end: "top 95%",
         },
       });
-    }
-  };
-
-  useGSAP(() => {
-    if (projectHeading.current) {
-      animation(projectHeading.current, "heading");
-    }
-    if (projectCards.current.length > 0) {
-      const cards = projectCards.current as HTMLSpanElement[];
-      animation(cards, "project__card");
     }
   }, []);
 
@@ -59,7 +37,9 @@ function AllProjects() {
     (async () => {
       try {
         const res = await axios.get("/api/get-projects");
-        console.log("Projects are ", res.data);
+        if (Array.isArray(res.data.data)) {
+          setAllProjects(res.data.data);
+        }
       } catch (error) {
         console.error("Error fetching projects");
       }
@@ -67,32 +47,19 @@ function AllProjects() {
   }, []);
 
   return (
-    <div className="mt-32 min-h-screen text-white lg:mt-0">
-      <div className="overflow-hidden">
-        <h1
-          className="-translate-x-full text-5xl font-bold"
-          ref={projectHeading}
-        >
-          Projects
-        </h1>
-      </div>
-      <div className="mt-16 grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-        {Array(10)
-          .fill(0)
-          .map((_, i) => (
+    <div className="mt-16 grid grid-cols-1 gap-16 text-white sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      {Array.isArray(allProjects) && allProjects.length > 0
+        ? allProjects.map((project, index) => (
             <span
-              key={i}
-              className="project__card translate-y-11 opacity-0"
-              ref={(el) => {
-                if (el) {
-                  projectCards.current[i] = el;
-                }
+              key={project._id}
+              ref={(el: HTMLSpanElement) => {
+                projectCards.current[index] = el;
               }}
             >
-              <ProjectCard />
+              <ProjectCard project={project} />
             </span>
-          ))}
-      </div>
+          ))
+        : "No Project found"}
     </div>
   );
 }

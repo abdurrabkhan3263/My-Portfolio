@@ -132,10 +132,10 @@ function About() {
           <Image
             src={"./image__profile.jpg"}
             alt="my__image"
-            width={500}
-            height={500}
-            loading="eager"
+            width={"auto" as any}
+            height={"auto" as any}
             priority
+            loading="eager"
           />
         </div>
       </div>

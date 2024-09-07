@@ -66,7 +66,11 @@ function MobileNav() {
               href={link}
               className={`my-6 block ${pathName === link ? "font-semibold" : "font-medium"} translate-y-[140%] text-7xl font-semibold text-white opacity-0`}
               onClick={() => dispatch(setNav(false))}
-              ref={(el: HTMLAnchorElement) => (navLinks.current[i] = el)}
+              ref={(el: HTMLAnchorElement) => {
+                if (el) {
+                  navLinks.current[i] = el;
+                }
+              }}
             >
               {name}
             </Link>

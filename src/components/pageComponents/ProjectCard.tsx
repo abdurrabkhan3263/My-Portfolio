@@ -11,8 +11,9 @@ import Image from "next/image";
 import Tilt from "react-parallax-tilt";
 import gsap from "gsap";
 import { Navigation } from "lucide-react";
+import { Project } from "@/lib/types";
 
-function ProjectCard() {
+function ProjectCard({ project }: { project: Project }) {
   const videoElement = useRef<HTMLVideoElement | null>(null);
   const imageElement = useRef<HTMLImageElement | null>(null);
   const cardTitleContainer = useRef<HTMLParagraphElement | null>(null);
@@ -80,9 +81,7 @@ function ProjectCard() {
           <CardTitle ref={cardTitleContainer}>
             <div className="relative min-h-48 w-full">
               <Image
-                src={
-                  "https://images.unsplash.com/photo-1718547963031-f35adda2ff5e?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                }
+                src={project.image || ""}
                 className="opacity-1 absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-cover"
                 alt="Person Image"
                 width={300}
@@ -91,7 +90,7 @@ function ProjectCard() {
                 priority
               />
               <video
-                src="https://res.cloudinary.com/dhq8asxro/video/upload/v1725627908/zwgotn8k8may4xn2kxhb.mp4"
+                src={project.video || ""}
                 muted
                 loop={true}
                 controls
@@ -100,13 +99,19 @@ function ProjectCard() {
               ></video>
             </div>
           </CardTitle>
+          <CardTitle>
+            <h2 className="text-xl font-semibold">{project.title}</h2>
+          </CardTitle>
           <CardDescription className="text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            ipsum
+            {project.description}
           </CardDescription>
         </CardHeader>
         <CardFooter>
-          <Button>Click to see</Button>
+          {project?.link && (
+            <Button onClick={() => window.open(project.link)}>
+              Click to see
+            </Button>
+          )}
         </CardFooter>
       </Card>
     </Tilt>
@@ -115,11 +120,20 @@ function ProjectCard() {
 
 export default ProjectCard;
 
-export function Button({ children }: { children: React.ReactNode }) {
+export function Button({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+}) {
   const nav = useRef<HTMLSpanElement | null>(null);
 
   return (
-    <button className="flex w-full justify-center gap-4 overflow-hidden rounded-md border bg-red-500 py-2 text-white hover:bg-red-400">
+    <button
+      className="flex w-full justify-center gap-4 overflow-hidden rounded-md border bg-red-500 py-2 text-white hover:bg-red-400"
+      onClick={onClick}
+    >
       {children}
       <span ref={nav}>
         <Navigation size={24} />

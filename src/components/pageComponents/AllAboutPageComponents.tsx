@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import About from "./About";
 import Skill from "./Skill";
-import Project from "./AllProjects";
+import Projects from "./Projects";
 import Contact from "./Contact";
 
 function AllAboutPageComponents() {
@@ -14,7 +14,7 @@ function AllAboutPageComponents() {
       {/* WHAT I KNOW IT */}
       <Skill />
       {/* Projects page */}
-      <Project />
+      <Projects />
       {/* Contact Page */}
       <Contact />
     </>
