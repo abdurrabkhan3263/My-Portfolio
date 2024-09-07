@@ -82,7 +82,7 @@ function ProjectCard({ project }: { project: Project }) {
             <div className="relative min-h-48 w-full">
               <Image
                 src={project.image || ""}
-                className="opacity-1 absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-cover"
+                className="opacity-1 absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-contain"
                 alt="Person Image"
                 width={300}
                 height={100}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import AllProjects from "./AllProjects";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

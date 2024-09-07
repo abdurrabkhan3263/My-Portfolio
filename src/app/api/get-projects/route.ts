@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   try {
     const db = mongoose.connection.db;
     const projects =
-      (await db?.collection("projects").find({}).toArray()) ?? [];
+      (await db?.collection("projects")?.find({}).toArray()) ?? [];
 
     return new Response(
       JSON.stringify({

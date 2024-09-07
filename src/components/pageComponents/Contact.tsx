@@ -18,8 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/schema/form.schama";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Textarea } from "../ui/textarea";
-import { Message } from "@/model/message.model";
-import axios, { isCancel, AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { Loader2Icon } from "lucide-react";
 
@@ -58,11 +57,11 @@ function Contact() {
       setIsSending(true);
       const response = await axios.post("/api/send-message", data);
       if (response.data.status) {
-        form.reset();
         toast({
           title: "Message Sent",
           description: "Your message has been sent successfully",
         });
+        form.reset();
       }
     } catch (error) {
       const axiosError = error as AxiosError;
