@@ -15,12 +15,6 @@ function Skill() {
   const slogan2 = useRef(null);
   const logos = useRef<Array<HTMLDivElement>>([]);
 
-  React.useEffect(() => {
-    logos.current = Array.from(
-      document.getElementsByClassName("logos"),
-    ) as Array<HTMLDivElement>;
-  }, []);
-
   function scrollAnimation(
     elements: Array<HTMLElement | null>,
     animationMode: string,
@@ -91,7 +85,13 @@ function Skill() {
           id="logos"
         >
           {skillIcons.map(({ Icon }, index) => (
-            <div key={index}>
+            <div
+              className="scale-0 opacity-0"
+              key={index}
+              ref={(el) => {
+                if (el) logos.current.push(el);
+              }}
+            >
               <Tilt
                 key={index}
                 className="overflow-hidden rounded-xl"
