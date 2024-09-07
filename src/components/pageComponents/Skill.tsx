@@ -91,7 +91,7 @@ function Skill() {
           id="logos"
         >
           {skillIcons.map(({ Icon }, index) => (
-            <div className="logos scale-0 opacity-0" key={index}>
+            <div key={index}>
               <Tilt
                 key={index}
                 className="overflow-hidden rounded-xl"
