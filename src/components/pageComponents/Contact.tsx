@@ -59,7 +59,8 @@ function Contact() {
       if (response.data.status) {
         toast({
           title: "Message Sent",
-          description: "Your message has been sent successfully",
+          description:
+            "Your message has been sent successfully. Thank you for contacting us.",
         });
         form.reset();
       }

@@ -30,9 +30,9 @@ function Nav() {
           >
             Portfolio
           </Link>
-          <div className="h-11 w-11 rounded-md">
+          <div className="h-11 w-11 content-center rounded-md text-center">
             <Menu
-              className="h-11 w-11 text-white"
+              className="h-10 w-10 text-white"
               onClick={() => {
                 dispatch(setNav(true));
               }}

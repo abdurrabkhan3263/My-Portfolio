@@ -16,7 +16,7 @@ function MobileNav() {
 
   useGSAP(() => {
     if (selector) {
-      gsap.to(".fixed", { top: 0, ease: "power2.inOut" });
+      gsap.to(".navContainer", { top: 0, ease: "power2.inOut" });
       gsap.to(navLinks.current, {
         delay: 0.4,
         translateY: 0,
@@ -26,7 +26,7 @@ function MobileNav() {
         ease: "power1.out",
       });
     } else {
-      gsap.to(".fixed", { top: "-100%", ease: "power2.inOut" });
+      gsap.to(".navContainer", { top: "-100%", ease: "power2.inOut" });
       gsap.to(navLinks.current, {
         translateY: "140%",
         opacity: 0,
@@ -52,7 +52,7 @@ function MobileNav() {
   ];
 
   return (
-    <div className="fixed -top-full z-[3] h-full w-full bg-[#0E0C38] px-6 pt-6 text-white">
+    <div className="navContainer fixed -top-full z-[3] h-full w-full bg-[#0E0C38] px-6 pt-6 text-white">
       <X
         className="h-11 w-11"
         onClick={() => {
