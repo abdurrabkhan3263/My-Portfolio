@@ -55,6 +55,8 @@ function Contact() {
   const onSubmit = async (data: any) => {
     try {
       setIsSending(true);
+      const currentDate = Date.now();
+      data = { ...data, createdAt: currentDate };
       const response = await axios.post("/api/send-message", data);
       if (response.data.status) {
         toast({
