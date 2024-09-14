@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import About from "./About";
 import Skill from "./Skill";
-import Projects from "./Projects";
+import ProjectHeading from "./Project_Heading";
 import Contact from "./Contact";
+import Projects from "./Projects";
 
 function AllAboutPageComponents() {
   return (
@@ -12,9 +13,14 @@ function AllAboutPageComponents() {
       {/* WHAT I KNOW IT */}
       <Skill />
       {/* Projects page */}
-      <Projects />
+      <div className="mt-32">
+        <ProjectHeading />
+        <Projects />
+      </div>
       {/* Contact Page */}
-      <Contact />
+      <div className="mt-32">
+        <Contact />
+      </div>
     </>
   );
 }

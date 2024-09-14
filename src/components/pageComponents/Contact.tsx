@@ -79,7 +79,7 @@ function Contact() {
   };
 
   return (
-    <div className="min-h-fit pb-16 pt-16 text-white">
+    <div className="min-h-fit pb-16 text-white">
       <div className="overflow-hidden">
         <h1
           className="-translate-x-full text-5xl font-bold"

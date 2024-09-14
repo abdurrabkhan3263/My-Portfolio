@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import ProjectHeading from "@/components/pageComponents/Project_Heading";
 import Projects from "@/components/pageComponents/Projects";
 
 export const metadata: Metadata = {
@@ -11,8 +12,9 @@ async function page() {
   return (
     <div
       style={{ minHeight: "calc(100vh - 80px)" }}
-      className="px-6 pb-16 lg:px-24"
+      className="px-6 pb-16 pt-20 lg:px-24"
     >
+      <ProjectHeading />
       <Projects />
     </div>
   );

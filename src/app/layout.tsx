@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Nav from "@/components/Nav";
 import { montserrat } from "@/components/ui/font";
 import StoreProvider from "./StoreProvider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -19,6 +20,7 @@ export default function RootLayout({
           </main>
           <Toaster />
         </StoreProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

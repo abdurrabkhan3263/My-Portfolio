@@ -5,10 +5,7 @@ import { ProjectModel } from "@/model/project.model";
 export async function GET(request: Request) {
   await dbConnect();
   try {
-    const db = mongoose.connection.db;
     const projects = (await ProjectModel.find().sort({ createdAt: -1 })) || [];
-
-    console.log("All projects fetched successfully", projects);
     return new Response(
       JSON.stringify({
         status: true,
