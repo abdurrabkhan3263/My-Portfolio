@@ -79,10 +79,10 @@ function ProjectCard({ project }: { project: Project }) {
       <Card>
         <CardHeader>
           <CardTitle ref={cardTitleContainer}>
-            <div className="relative min-h-48 w-full">
+            <div className="relative mb-2.5 min-h-48 w-full">
               <Image
-                src={project.image || ""}
-                className="opacity-1 absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-contain"
+                src={project.image?.url || ""}
+                className="opacity-1 absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-cover"
                 alt="Person Image"
                 width={300}
                 height={100}
@@ -90,7 +90,7 @@ function ProjectCard({ project }: { project: Project }) {
                 priority
               />
               <video
-                src={project.video || ""}
+                src={project.video?.url || ""}
                 muted
                 loop={true}
                 controls
@@ -99,9 +99,7 @@ function ProjectCard({ project }: { project: Project }) {
               ></video>
             </div>
           </CardTitle>
-          <CardTitle>
-            <h2 className="text-xl font-semibold">{project.title}</h2>
-          </CardTitle>
+          <CardTitle>{project.title}</CardTitle>
           <CardDescription className="text-base">
             {project.description}
           </CardDescription>
