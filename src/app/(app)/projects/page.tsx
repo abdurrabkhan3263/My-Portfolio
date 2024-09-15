@@ -1,7 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import ProjectHeading from "@/components/pageComponents/Project_Heading";
-import Projects from "@/components/pageComponents/Projects";
+import Projects from "@/components/pageComponents/AllProjects";
+import axios from "axios";
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -3,7 +3,8 @@ import About from "./About";
 import Skill from "./Skill";
 import ProjectHeading from "./Project_Heading";
 import Contact from "./Contact";
-import Projects from "./Projects";
+import Projects from "./AllProjects";
+import AllProjects from "./AllProjects";
 
 function AllAboutPageComponents() {
   return (
@@ -15,7 +16,7 @@ function AllAboutPageComponents() {
       {/* Projects page */}
       <div className="mt-32">
         <ProjectHeading />
-        <Projects />
+        <AllProjects />
       </div>
       {/* Contact Page */}
       <div className="mt-32">
