@@ -3,10 +3,9 @@ import About from "./About";
 import Skill from "./Skill";
 import ProjectHeading from "./Project_Heading";
 import Contact from "./Contact";
-import Projects from "./AllProjects";
-import AllProjects from "./AllProjects";
+import Projects from "./Projects";
 
-function AllAboutPageComponents() {
+async function AllAboutPageComponents() {
   return (
     <>
       {/* ABOUT SECTION */}
@@ -16,7 +15,7 @@ function AllAboutPageComponents() {
       {/* Projects page */}
       <div className="mt-32">
         <ProjectHeading />
-        <AllProjects />
+        <Projects />
       </div>
       {/* Contact Page */}
       <div className="mt-32">

@@ -5,7 +5,8 @@ import { ProjectModel } from "@/model/project.model";
 export async function GET(request: Request) {
   await dbConnect();
   try {
-    const projects = (await ProjectModel.find().sort({ createdAt: -1 })) || [];
+    const projects =
+      (await ProjectModel.find().sort({ createdAt: -1 }).lean()) || [];
     return new Response(
       JSON.stringify({
         status: true,
@@ -14,7 +15,6 @@ export async function GET(request: Request) {
       }),
       {
         status: 200,
-        headers: { "Content-Type": "application/json" },
       },
     );
   } catch (error) {
@@ -26,7 +26,6 @@ export async function GET(request: Request) {
       }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json" },
       },
     );
   }
