@@ -44,6 +44,7 @@ export default function AllProjects() {
         const response = await axios.get("/api/get-projects");
         if (response.status === 200) {
           if (Array.isArray(response.data.data)) {
+            console.log("All Projects are:- ", response.data.data);
             setAllProjects(response.data.data);
           } else {
             setAllProjects([]);
