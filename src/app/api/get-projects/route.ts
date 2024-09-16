@@ -2,6 +2,8 @@ import dbConnect from "@/db/dbConnnect";
 import mongoose from "mongoose";
 import { ProjectModel } from "@/model/project.model";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
   await dbConnect();
   try {

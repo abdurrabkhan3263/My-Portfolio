@@ -3,12 +3,17 @@ import { Project } from "./types";
 
 const getProjects = async () => {
   try {
-    const res = await axios.get(
+    const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/get-projects`,
+      {
+        next: { revalidate: 5 },
+      },
     );
-    if (Array.isArray(res.data.data)) {
-      return res.data.data as Project[];
+    if (res.ok) {
+      const data = await res.json();
+      return data.data as Project[];
     } else {
+      console.error("Error fetching projects:", res.statusText);
       return [];
     }
   } catch (error) {
