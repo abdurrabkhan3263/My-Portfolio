@@ -58,7 +58,7 @@ function Skill() {
   }, []);
 
   return (
-    <div className="text-white">
+    <div className="mt-16 text-white">
       <div className="flex w-full justify-center">
         <div className="w-full text-center lg:w-1/2">
           <div className="overflow-hidden">

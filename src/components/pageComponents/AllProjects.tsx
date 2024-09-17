@@ -42,7 +42,7 @@ export default function AllProjects({
         allProjects.map((project, index) => (
           <span
             key={project._id}
-            className="translate-y-12 opacity-0"
+            className="translate-y-16 opacity-0"
             ref={(el: HTMLSpanElement) => {
               projectCards.current[index] = el;
             }}

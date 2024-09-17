@@ -1,5 +1,4 @@
 import AllAboutPageComponents from "@/components/pageComponents/AllAboutPageComponents";
-import getProjects from "@/lib/getAllProjects";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

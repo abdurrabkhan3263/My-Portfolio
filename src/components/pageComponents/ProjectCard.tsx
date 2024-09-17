@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   Card,
   CardDescription,
@@ -12,59 +12,48 @@ import Tilt from "react-parallax-tilt";
 import gsap from "gsap";
 import { Navigation } from "lucide-react";
 import { Project } from "@/lib/types";
+import { CldVideoPlayer, getCldImageUrl } from "next-cloudinary";
+import "next-cloudinary/dist/cld-video-player.css";
 
 function ProjectCard({ project }: { project: Project }) {
   const videoElement = useRef<HTMLVideoElement | null>(null);
   const imageElement = useRef<HTMLImageElement | null>(null);
-  const cardTitleContainer = useRef<HTMLParagraphElement | null>(null);
+  const videoContainer = useRef<HTMLDivElement | null>(null);
   const isMouseEnterRef = useRef(false);
+  const timelineRef = useRef(gsap.timeline({ paused: true }));
 
-  const mouseEnter = () => {
+  const mouseEnter = useCallback(() => {
     isMouseEnterRef.current = true;
     setTimeout(() => {
       const videoElem = videoElement.current;
-      const imageElem = imageElement.current;
-      if (videoElem && imageElem && isMouseEnterRef.current) {
-        gsap.to(videoElem, {
-          opacity: 1,
-        });
+      if (videoElem && isMouseEnterRef.current) {
         videoElem.play();
-        videoElem.autoplay = true;
-        gsap.to(imageElem, {
-          opacity: 0,
-        });
+        timelineRef.current.play();
       }
     }, 500);
-  };
+  }, []);
 
-  const mouseLeave = () => {
+  const mouseLeave = useCallback(() => {
     isMouseEnterRef.current = false;
     const videoElem = videoElement.current;
-    const imageElem = imageElement.current;
-    if (videoElem && imageElem) {
+    if (videoElem) {
       videoElem.pause();
-      gsap.to(videoElem, {
-        opacity: 0,
-      });
-      videoElem.autoplay = false;
-      gsap.to(imageElem, {
-        opacity: 1,
-      });
+      timelineRef.current.reverse();
     }
-  };
+  }, []);
 
-  useEffect(() => {
-    const cardContainer = cardTitleContainer.current;
-    if (cardContainer) {
-      cardContainer.addEventListener("mouseenter", mouseEnter);
-      cardContainer.addEventListener("mouseleave", mouseLeave);
+  React.useEffect(() => {
+    const videoBox = videoContainer.current;
+    const imageElem = imageElement.current;
+
+    if (videoBox && imageElem) {
+      timelineRef.current
+        .to(videoBox, { opacity: 1 })
+        .to(imageElem, { opacity: 0 }, "<");
     }
 
     return () => {
-      if (cardContainer) {
-        cardContainer.removeEventListener("mouseenter", mouseEnter);
-        cardContainer.removeEventListener("mouseleave", mouseLeave);
-      }
+      timelineRef.current.kill();
     };
   }, []);
 
@@ -77,8 +66,8 @@ function ProjectCard({ project }: { project: Project }) {
       scale={1.05}
     >
       <Card>
-        <CardHeader>
-          <CardTitle ref={cardTitleContainer}>
+        <CardHeader onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+          <CardTitle>
             <div className="relative mb-2.5 min-h-48 w-full">
               <Image
                 src={project.image?.url || ""}
@@ -89,14 +78,25 @@ function ProjectCard({ project }: { project: Project }) {
                 ref={imageElement}
                 priority
               />
-              <video
-                src={project.video?.url || ""}
-                muted
-                loop={true}
-                controls
-                className="absolute right-1/2 top-0 h-full w-full translate-x-1/2 rounded-md object-cover opacity-0"
-                ref={videoElement}
-              ></video>
+              <div
+                className="absolute right-1/2 top-0 h-full w-full translate-x-1/2 overflow-hidden rounded-md object-cover opacity-0"
+                ref={videoContainer}
+              >
+                <CldVideoPlayer
+                  videoRef={videoElement}
+                  src={project.video?.url || ""}
+                  id={project._id}
+                  controls
+                  bigPlayButton={false}
+                  loop={true}
+                  muted
+                  transformation={{
+                    streaming_profile: "hd",
+                  }}
+                  sourceTypes={["hls", "dash"]}
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </CardTitle>
           <CardTitle>{project.title}</CardTitle>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import About from "./About";
 import Skill from "./Skill";
 import ProjectHeading from "./Project_Heading";
@@ -18,7 +18,7 @@ async function AllAboutPageComponents() {
         <Projects />
       </div>
       {/* Contact Page */}
-      <div className="mt-32">
+      <div className="mt-16">
         <Contact />
       </div>
     </>

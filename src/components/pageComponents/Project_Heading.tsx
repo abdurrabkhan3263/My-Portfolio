@@ -25,7 +25,7 @@ export default function ProjectHeading() {
 
   return (
     <div className="min-h-fit">
-      <div className="mt-32 text-white lg:mt-0">
+      <div className="text-white">
         <div className="overflow-hidden">
           <h1
             className="-translate-x-full text-5xl font-bold"
