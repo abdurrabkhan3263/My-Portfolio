@@ -36,7 +36,7 @@ function About() {
       className="flex w-full flex-col text-white lg:flex-row"
       style={{ minHeight: "calc(100vh - 80px)" }}
     >
-      <div className="mt-32 flex h-full flex-1 items-center">
+      <div className="mt-16 flex h-full flex-1 items-center lg:mt-32">
         <div>
           <div>
             <p className="text-2xl font-medium">Hello, I am</p>

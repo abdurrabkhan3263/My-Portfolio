@@ -13,6 +13,7 @@ export interface Project extends Document {
   };
   link: string;
   createdAt: Date;
+  position: number;
 }
 
 const projectSchema: Schema<Project> = new Schema(
@@ -42,6 +43,9 @@ const projectSchema: Schema<Project> = new Schema(
     link: {
       type: String,
       required: true,
+    },
+    position: {
+      type: Number,
     },
   },
   { timestamps: true },
