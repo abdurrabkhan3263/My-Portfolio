@@ -6,8 +6,7 @@ const getProjects = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/get-projects`,
       {
-        // next: { revalidate: 86400 },
-        next: { revalidate: 6 },
+        next: { revalidate: 86400 },
       },
     );
     if (res.ok) {
