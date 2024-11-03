@@ -1,5 +1,4 @@
 import dbConnect from "@/db/dbConnnect";
-import mongoose from "mongoose";
 import { ProjectModel } from "@/model/project.model";
 
 export const dynamic = "force-dynamic";
@@ -8,7 +7,7 @@ export async function GET(request: Request) {
   await dbConnect();
   try {
     const projects =
-      (await ProjectModel.find().sort({ createdAt: -1 }).lean()) || [];
+      (await ProjectModel.find().sort({ position: 1 }).lean()) || [];
     return new Response(
       JSON.stringify({
         status: true,

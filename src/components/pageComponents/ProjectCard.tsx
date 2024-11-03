@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import {
   Card,
   CardDescription,
@@ -52,8 +52,9 @@ function ProjectCard({ project }: { project: Project }) {
         .to(imageElem, { opacity: 0 }, "<");
     }
 
+    const timeline = timelineRef.current;
     return () => {
-      timelineRef.current.kill();
+      timeline.kill();
     };
   }, []);
 

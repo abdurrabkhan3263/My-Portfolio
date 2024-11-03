@@ -1,4 +1,4 @@
-import { FaHtml5 } from "react-icons/fa";
+import { FaDocker, FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { SiTypescript } from "react-icons/si";
@@ -9,6 +9,7 @@ import { SiExpress } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
 import { FaGitAlt } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { DiRedis } from "react-icons/di";
 
 export const skillIcons = [
   {
@@ -43,5 +44,11 @@ export const skillIcons = [
   },
   {
     Icon: FaGithub,
+  },
+  {
+    Icon: DiRedis,
+  },
+  {
+    Icon: FaDocker,
   },
 ];

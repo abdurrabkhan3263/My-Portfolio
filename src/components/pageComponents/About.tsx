@@ -9,28 +9,48 @@ import gsap from "gsap";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ResumeBtn from "../ResumeBtn";
 
 function About() {
   const element2 = useRef(null);
   const element3 = useRef(null);
   const element4 = useRef(null);
   const profileImage = useRef(null);
-  const timeLine = gsap.timeline();
 
   useGSAP(() => {
+    gsap.set(
+      [
+        element2.current,
+        element3.current,
+        element4.current,
+        profileImage.current,
+      ],
+      {
+        y: 100,
+        opacity: 0,
+      },
+    );
+
+    const timeLine = gsap.timeline();
     timeLine.to([element2.current, element3.current, element4.current], {
-      translateY: "0px",
-      ease: "power1",
-      duration: "0.3",
-      stagger: 0.4,
-    });
-    timeLine.to(profileImage.current, {
-      translateY: "0px",
-      ease: "power1",
+      y: 0,
       opacity: 1,
-      duration: "0.5",
+      ease: "power1.out",
+      duration: 0.6,
+      stagger: 0.2,
     });
+    timeLine.to(
+      profileImage.current,
+      {
+        y: 0,
+        opacity: 1,
+        ease: "power1.out",
+        duration: 0.6,
+      },
+      "-=0.3",
+    );
   }, []);
+
   return (
     <div
       className="flex w-full flex-col text-white lg:flex-row"
@@ -43,7 +63,7 @@ function About() {
           </div>
           <div className="mt-1 overflow-hidden">
             <h1
-              className="translate-y-full text-6xl font-extrabold leading-[75px] lg:text-[80px]"
+              className="text-6xl font-extrabold leading-[75px] lg:text-[80px]"
               ref={element2}
             >
               Abdur Rab
@@ -51,17 +71,17 @@ function About() {
           </div>
           <div className="overflow-hidden">
             <h1
-              className="translate-y-full text-6xl font-extrabold leading-[75px] lg:text-[80px]"
+              className="text-6xl font-extrabold leading-[75px] lg:text-[80px]"
               ref={element3}
             >
               Khan
             </h1>
           </div>
           <div className="overflow-hidden text-base lg:text-lg">
-            <p className="mt-2.5 translate-y-full font-medium" ref={element4}>
+            <p className="mt-2.5 font-medium" ref={element4}>
               Passionate
               <span className="text-[#FFC327]"> Full Stack Web Developer </span>
-              && enthusiast to build applications.
+              & enthusiast to build something new.
             </p>
           </div>
           <div className="overflow-hidden">
@@ -110,22 +130,15 @@ function About() {
               </div>
             </div>
           </div>
-          <div className="mt-16 flex gap-14 overflow-hidden">
+          <div className="mt-14 flex gap-14 overflow-hidden">
             <span>
-              <Button
-                className="shadow-lightShadow transition-all hover:bg-blue-600 hover:shadow-lg"
-                onClick={() => {
-                  window.open("/resume.pdf", "_blank");
-                }}
-              >
-                Resume
-              </Button>
+              <ResumeBtn />
             </span>
           </div>
         </div>
       </div>
       <div className="mt-16 flex w-full flex-1 items-center justify-center lg:mt-0">
-        <div ref={profileImage} className="translate-y-10 opacity-0">
+        <div ref={profileImage}>
           <Image
             src={"./image__profile.jpg"}
             alt="my__image"
